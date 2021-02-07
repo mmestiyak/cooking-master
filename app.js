@@ -54,6 +54,7 @@ function handleSearchFormSubmit(event) {
       mealsContainerDiv.innerHTML = mealsHtmlString;
       ingredientInfoDiv.innerHTML = '';
       ingredientInfoDiv.style.background = 'transparent';
+      searchForm.reset();
 
     } catch (error) {
       console.log(error);
