@@ -1,7 +1,7 @@
 const searchForm = document.getElementById("search-form");
 const mealsContainerDiv = document.querySelector(".meals");
-const ingredientInfoDiv = document.querySelector('.ingredient-info')
-let fuck;
+const ingredientInfoDiv = document.querySelector(".ingredient-info");
+
 async function fetchMealInfo(mealId) {
   const apiUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
   try {
@@ -52,10 +52,9 @@ function handleSearchFormSubmit(event) {
         }, "");
 
       mealsContainerDiv.innerHTML = mealsHtmlString;
-      ingredientInfoDiv.innerHTML = '';
-      ingredientInfoDiv.style.background = 'transparent';
+      ingredientInfoDiv.innerHTML = "";
+      ingredientInfoDiv.style.background = "transparent";
       searchForm.reset();
-
     } catch (error) {
       console.log(error);
     }
@@ -75,7 +74,7 @@ mealsContainerDiv.addEventListener("click", (event) => {
         let ingredients = [];
         let ingredientsMeasure = [];
 
-        // loop over object ot get ingredient info
+        // loop over object to get ingredient info
         for (property in dataObject) {
           if (property.includes("Ingredient") && dataObject[property] !== "") {
             ingredients.push(dataObject[property]);
@@ -94,22 +93,18 @@ mealsContainerDiv.addEventListener("click", (event) => {
 
         // Ingredient info in HTML
         const ingredientHtmlString = `
-         
            <div>
            <img src=${dataObject.strMealThumb}  />
            </div>
            <div>
            <h1>${dataObject.strMeal}</h1>
-
            <h2>Ingredients</h2>
            <ul>${ingredientItemsHtmlString}</ul>
            </div>
-         
-
         `;
         ingredientInfoDiv.innerHTML = ingredientHtmlString;
-        ingredientInfoDiv.style.background = 'tomato';
-        scrollTo({top:0, left:0, behavior:'smooth'})
+        ingredientInfoDiv.style.background = "tomato";
+        scrollTo({ top: 0, left: 0, behavior: "smooth" });
       } catch (error) {
         console.log(error);
       }
