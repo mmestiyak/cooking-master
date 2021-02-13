@@ -13,6 +13,7 @@ async function fetchMealInfo(mealId) {
   }
 }
 async function fetchMeals(mealName) {
+  loading()
   const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}
   `;
   try {
@@ -52,6 +53,7 @@ function handleSearchFormSubmit(event) {
         }, "");
 
       mealsContainerDiv.innerHTML = mealsHtmlString;
+      loadingCompleted()
       ingredientInfoDiv.innerHTML = "";
       ingredientInfoDiv.style.background = "transparent";
       searchForm.reset();
@@ -111,3 +113,14 @@ mealsContainerDiv.addEventListener("click", (event) => {
     })();
   }
 });
+
+function loading(){
+  const loadingElem = document.querySelector('.loading')
+  loadingElem.classList.remove('d-none')
+  mealsContainerDiv.classList.add('d-none')
+}
+function loadingCompleted(){
+  const loadingElem = document.querySelector('.loading')
+  loadingElem.classList.add('d-none')
+  mealsContainerDiv.classList.remove('d-none')
+}

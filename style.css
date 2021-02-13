@@ -99,6 +99,16 @@ img {
   padding: 0.2em;
 }
 
+.d-none {
+  display: none;
+}
+.loading {
+  position: absolute;
+  left:50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* responsive */
 @media (max-width:760px){
   html {
